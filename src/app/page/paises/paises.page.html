@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>paises</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-chip outline color="success">
+    <ion-icon name="heart-circle"></ion-icon>
+    <ion-label>Recuperados</ion-label>
+  </ion-chip>
+  <ion-chip outline color="danger">
+    <ion-icon name="nuclear"></ion-icon>
+    <ion-label>Casos</ion-label>
+  </ion-chip>
+  <ion-chip outline color="dark">
+    <ion-icon name="skull"></ion-icon>
+    <ion-label>Mortes</ion-label>
+  </ion-chip>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>
+              <ion-icon color="success" name="heart-circle" size="large"></ion-icon>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>{{this.recuperados}}</ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>
+              <ion-icon color="danger" name="nuclear" size="large"></ion-icon>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>{{this.casos}}</ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>
+              <ion-icon color="dark" name="skull" size="large"></ion-icon>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>{{this.mortes}}</ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-card *ngFor="let pais of paises">
+    <ion-card-header>
+      <ion-card-subtitle>Atualizado: {{formatar(pais.updated_at)}}</ion-card-subtitle>
+      <ion-card-title>{{pais.country}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-icon color="success" name="heart-circle"></ion-icon>
+          <ion-label slot="end">{{pais.recovered}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon color="danger" name="nuclear"></ion-icon>
+          <ion-label slot="end">{{pais.cases}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon color="dark" name="skull"></ion-icon>
+          <ion-label slot="end">{{pais.deaths}}</ion-label>
+        </ion-item>
+        <ion-item button (click)="detalhes(pais.country)" detail>
+          <ion-label>
+            Detalhes
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

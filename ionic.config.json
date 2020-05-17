@@ -1,0 +1,7 @@
+{
+  "name": "corona",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

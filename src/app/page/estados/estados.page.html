@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Estados</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-chip outline color="danger">
+    <ion-icon name="nuclear"></ion-icon>
+    <ion-label>Casos</ion-label>
+  </ion-chip>
+  <ion-chip outline color="warning">
+    <ion-icon name="warning"></ion-icon>
+    <ion-label>Suspeitos</ion-label>
+  </ion-chip>
+  <ion-chip outline color="dark">
+    <ion-icon name="skull"></ion-icon>
+    <ion-label>Mortes</ion-label>
+  </ion-chip>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>
+              <ion-icon color="danger" name="nuclear" size="large"></ion-icon>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>{{this.casos}}</ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>
+              <ion-icon color="warning" name="warning" size="large"></ion-icon>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>{{this.suspeito}}</ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>
+              <ion-icon color="dark" name="skull" size="large"></ion-icon>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>{{this.morte}}</ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-card *ngFor="let estado of estados">
+    <ion-card-header>
+      <ion-card-subtitle>Atualizado: {{formatar(estado.datetime)}}</ion-card-subtitle>
+      <ion-card-title>{{estado.state}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-icon color="danger" name="nuclear"></ion-icon>
+          <ion-label slot="end">{{estado.cases}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon color="warning" name="warning"></ion-icon>
+          <ion-label slot="end">{{estado.suspects}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon color="dark" name="skull"></ion-icon>
+          <ion-label slot="end">{{estado.deaths}}</ion-label>
+        </ion-item>
+        <ion-item button (click)="detalhes(estado.uf)" detail>
+          <ion-label>
+            Detalhes
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
