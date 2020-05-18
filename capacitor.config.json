@@ -1,5 +1,5 @@
 {
-  "appId": "io.ionic.starter",
+  "appId": "com.dizesoft.corona",
   "appName": "corona",
   "bundledWebRuntime": false,
   "npmClient": "npm",
