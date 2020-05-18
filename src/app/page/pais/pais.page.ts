@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CovidService } from 'src/app/api/covid.service';
 import { Page } from '../Page';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-pais',
@@ -17,9 +18,10 @@ export class PaisPage extends Page implements OnInit {
 
   constructor(
     private navPar:ActivatedRoute,
-    private covid:CovidService
+    private covid:CovidService,
+    public loadingController: LoadingController
   ) { 
-    super();
+    super(loadingController);
   }
 
   ngOnInit() {
@@ -28,6 +30,7 @@ export class PaisPage extends Page implements OnInit {
   }
 
   private carregar(pais:string){
+    super.presentLoading();
     this.covid.pais(pais)
     .then(data => this.pais = data.data);
   }

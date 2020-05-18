@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CovidService } from 'src/app/api/covid.service';
-import { NavController } from '@ionic/angular';
+import { NavController, LoadingController } from '@ionic/angular';
 import { Page } from '../Page';
 
 @Component({
@@ -20,9 +20,10 @@ export class EstadosPage extends Page implements OnInit {
 
   constructor(
     private covid:CovidService,
-    private nav:NavController
+    private nav:NavController,
+    public loadingController: LoadingController
   ) { 
-    super();
+    super(loadingController);
   }
 
   ngOnInit() {
@@ -30,6 +31,7 @@ export class EstadosPage extends Page implements OnInit {
   }
 
   carregar(){
+    super.presentLoading();
     this.covid.init()
     .then(retorno => {
       this.estados = retorno.data;
