@@ -51,7 +51,7 @@ export class PaisesPage extends Page implements OnInit {
   buscar(event){
     let valor:string = event.detail.value;
     let resultado = new Array();
-    this.dados.find((pais:any) => {
+    this.dados.forEach((pais:any) => {
       if(pais.country.toLowerCase().includes(valor.toLowerCase())){
         resultado.push(pais);
       }
