@@ -11,7 +11,7 @@ export class Page{
 
       async presentLoading() {
         this.loading =  await this.loadingController.create({
-          message: 'Espere po favor...',
+          message: 'Espere por favor...',
         });
          await this.loading.present();
          await this.loading.dismiss();
